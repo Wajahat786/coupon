@@ -11,15 +11,15 @@
 </head>
 <body class="admin-body">
 <aside class="admin-sidebar">
-  <a class="brand" href="/admin">⚡ Admin</a>
+  <a class="brand" href="/admin"><?= icon("zap", 18) ?> Admin</a>
   <nav>
-    <a href="/admin">📊 Dashboard</a>
-    <a href="/admin/coupons">🎟️ Coupons</a>
-    <a href="/admin/referrals">🔗 Referral Links</a>
-    <a href="/admin/users">👥 Users</a>
-    <a href="/admin/settings">⚙️ Settings</a>
-    <a href="/admin/audit">📜 Audit Log</a>
-    <a href="/">← View Site</a>
+    <a href="/admin"><?= icon("chart", 17) ?> Dashboard</a>
+    <a href="/admin/coupons"><?= icon("coupon", 17) ?> Coupons</a>
+    <a href="/admin/referrals"><?= icon("link", 17) ?> Referral Links</a>
+    <a href="/admin/users"><?= icon("users", 17) ?> Users</a>
+    <a href="/admin/settings"><?= icon("settings", 17) ?> Settings</a>
+    <a href="/admin/audit"><?= icon("history", 17) ?> Audit Log</a>
+    <a href="/"><?= icon("external", 17) ?> View Site</a>
   </nav>
   <div class="sidebar-foot">
     <span class="muted"><?= e(Auth::user()['name'] ?? '') ?></span>
@@ -27,7 +27,7 @@
       <button class="btn btn-outline btn-sm btn-block" type="submit">Logout</button>
     </form>
     <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle theme">
-      <span class="theme-icon-dark">🌙</span><span class="theme-icon-light">☀️</span>
+      <span class="theme-icon-dark"><?= icon("moon", 17) ?></span><span class="theme-icon-light"><?= icon("sun", 17) ?></span>
     </button>
   </div>
 </aside>

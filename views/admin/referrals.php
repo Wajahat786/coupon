@@ -23,18 +23,18 @@
         <?php if ($r['status'] !== 'approved'): ?>
         <form method="post" action="/admin/referrals/review" class="inline-form"><?= csrf_field() ?>
           <input type="hidden" name="id" value="<?= $rid ?>"><input type="hidden" name="action" value="approve">
-          <button class="btn btn-ok btn-xs" type="submit">✔ Approve</button>
+          <button class="btn btn-ok btn-xs" type="submit"><?= icon("check", 14) ?> Approve</button>
         </form>
         <?php endif; ?>
         <?php if ($r['status'] !== 'rejected'): ?>
         <form method="post" action="/admin/referrals/review" class="inline-form"><?= csrf_field() ?>
           <input type="hidden" name="id" value="<?= $rid ?>"><input type="hidden" name="action" value="reject">
-          <button class="btn btn-danger btn-xs" type="submit">✖ Reject</button>
+          <button class="btn btn-danger btn-xs" type="submit"><?= icon("x", 14) ?> Reject</button>
         </form>
         <?php endif; ?>
         <form method="post" action="/admin/referrals/delete" class="inline-form" onsubmit="return confirm('Delete referral #<?= $rid ?> permanently?');">
           <?= csrf_field() ?><input type="hidden" name="id" value="<?= $rid ?>">
-          <button class="btn btn-ghost btn-xs" type="submit">🗑</button>
+          <button class="btn btn-ghost btn-xs" type="submit"><?= icon("trash", 14) ?></button>
         </form>
       </td>
     </tr>

@@ -15,7 +15,7 @@
     <button class="btn btn-copy btn-sm" type="button" data-copy="<?= e($c['code']) ?>">Copy</button>
   </div>
   <div class="card-foot">
-    <a class="btn btn-primary btn-sm" href="/go/coupon/<?= (int) $c['id'] ?>" target="_blank" rel="noopener nofollow ugc">Get Deal →</a>
+    <a class="btn btn-primary btn-sm" href="/go/coupon/<?= (int) $c['id'] ?>" target="_blank" rel="noopener nofollow ugc">Get Deal <?= icon("arrow-right", 14) ?></a>
     <span class="muted"><?= (int) $c['clicks'] ?> clicks</span>
   </div>
 </article>

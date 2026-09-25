@@ -1,5 +1,5 @@
 <section class="page-head">
-  <h1>🎟️ Submit a Coupon</h1>
+  <h1><?= icon("coupon", 22) ?> Submit a Coupon</h1>
   <p class="muted">Every submission is reviewed by an admin before going live.</p>
 </section>
 

@@ -10,7 +10,7 @@
 
 <div class="admin-cols">
   <section>
-    <div class="section-head"><h2>Latest coupon submissions</h2><a class="see-all" href="/admin/coupons?status=pending">Review queue →</a></div>
+    <div class="section-head"><h2>Latest coupon submissions</h2><a class="see-all" href="/admin/coupons?status=pending">Review queue <?= icon("arrow-right", 14) ?></a></div>
     <table class="table table-compact">
       <tbody>
       <?php foreach ($recentCoupons as $c): ?>
@@ -25,7 +25,7 @@
   </section>
 
   <section>
-    <div class="section-head"><h2>Latest referral submissions</h2><a class="see-all" href="/admin/referrals?status=pending">Review queue →</a></div>
+    <div class="section-head"><h2>Latest referral submissions</h2><a class="see-all" href="/admin/referrals?status=pending">Review queue <?= icon("arrow-right", 14) ?></a></div>
     <table class="table table-compact">
       <tbody>
       <?php foreach ($recentReferrals as $r): ?>
@@ -41,7 +41,7 @@
 </div>
 
 <section>
-  <div class="section-head"><h2>Recent activity</h2><a class="see-all" href="/admin/audit">Full log →</a></div>
+  <div class="section-head"><h2>Recent activity</h2><a class="see-all" href="/admin/audit">Full log <?= icon("arrow-right", 14) ?></a></div>
   <table class="table table-compact">
     <tbody>
     <?php foreach ($audit as $a): ?>

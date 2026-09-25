@@ -13,7 +13,7 @@
 
 <?php if ($coupons): ?>
 <section class="section">
-  <div class="section-head"><h2>🔥 Latest Coupons</h2><a class="see-all" href="/coupons">See all →</a></div>
+  <div class="section-head"><h2><?= icon("flame", 20) ?> Latest Coupons</h2><a class="see-all" href="/coupons">See all <?= icon("arrow-right", 14) ?></a></div>
   <div class="grid">
     <?php foreach ($coupons as $c): include BASE_PATH . '/views/partials/coupon_card.php'; endforeach; ?>
   </div>
@@ -24,7 +24,7 @@
 
 <?php if ($referrals): ?>
 <section class="section">
-  <div class="section-head"><h2>🤝 Popular Referral Links</h2><a class="see-all" href="/referrals">See all →</a></div>
+  <div class="section-head"><h2><?= icon("share", 20) ?> Popular Referral Links</h2><a class="see-all" href="/referrals">See all <?= icon("arrow-right", 14) ?></a></div>
   <div class="grid">
     <?php foreach ($referrals as $r): include BASE_PATH . '/views/partials/referral_card.php'; endforeach; ?>
   </div>

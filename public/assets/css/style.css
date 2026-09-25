@@ -263,3 +263,13 @@ img { max-width: 100%; }
   .sidebar-foot { margin-top: 0; }
   .main-nav { order: 3; width: 100%; justify-content: center; }
 }
+
+
+/* ---------- SVG icon system alignment ---------- */
+.icon { flex-shrink: 0; vertical-align: -3px; }
+.btn, .icon-btn, .brand, .see-all, .back-link, .chip, label, th, td form { display: inline-flex; align-items: center; gap: 6px; }
+.btn > span { line-height: 1; }
+.sidebar a, nav a { display: flex; align-items: center; gap: 9px; }
+nav.main-nav a { display: inline-flex; align-items: center; gap: 6px; }
+.theme-toggle { display: inline-flex; align-items: center; justify-content: center; }
+.theme-icon-dark, .theme-icon-light { display: inline-flex; }

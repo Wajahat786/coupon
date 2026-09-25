@@ -12,6 +12,7 @@ $bootstrap = is_file(__DIR__ . '/../app/bootstrap.php')
     : __DIR__ . '/app/bootstrap.php';     // layout B: everything in public_html
 require $bootstrap;
 require dirname($bootstrap) . '/helpers.php';
+require BASE_PATH . '/views/partials/icons.php';
 
 use App\Controllers\Admin\CouponController as AdminCoupon;
 use App\Controllers\Admin\DashboardController;

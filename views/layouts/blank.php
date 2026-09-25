@@ -10,14 +10,14 @@
 </head>
 <body class="centered-page">
 <div class="auth-card">
-  <a class="brand brand-lg" href="/">🔥 <?= e(setting('site_name', 'DealHub')) ?></a>
+  <a class="brand brand-lg" href="/"><?= icon("flame", 26) ?> <?= e(setting('site_name', 'DealHub')) ?></a>
   <?php if ($msg = flash_message()): ?>
     <div class="alert alert-<?= e($msg['type']) ?>"><?= e($msg['text']) ?></div>
   <?php endif; ?>
   <?= $content ?>
 </div>
 <button id="themeToggle" class="theme-fab icon-btn" type="button" aria-label="Toggle theme">
-  <span class="theme-icon-dark">🌙</span><span class="theme-icon-light">☀️</span>
+  <span class="theme-icon-dark"><?= icon("moon", 17) ?></span><span class="theme-icon-light"><?= icon("sun", 17) ?></span>
 </button>
 <script src="/assets/js/app.js"></script>
 </body>

@@ -1,4 +1,4 @@
-<h1>Welcome back 👋</h1>
+<h1>Welcome back</h1>
 <p class="muted">Sign in to manage your submissions.</p>
 <form method="post" action="/login" class="form" novalidate>
   <?= csrf_field() ?>

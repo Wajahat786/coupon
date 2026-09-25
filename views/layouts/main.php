@@ -12,7 +12,7 @@
 <body>
 <header class="site-header">
   <div class="container nav-row">
-    <a class="brand" href="/">🔥 <span><?= e(setting('site_name', 'DealHub')) ?></span></a>
+    <a class="brand" href="/"><?= icon("flame", 20) ?> <span><?= e(setting('site_name', 'DealHub')) ?></span></a>
     <nav class="main-nav">
       <a href="/coupons">Coupons</a>
       <a href="/referrals">Referral Links</a>
@@ -24,7 +24,7 @@
     </nav>
     <div class="nav-actions">
       <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle light/dark theme" title="Toggle theme">
-        <span class="theme-icon-dark">🌙</span><span class="theme-icon-light">☀️</span>
+        <span class="theme-icon-dark"><?= icon("moon", 17) ?></span><span class="theme-icon-light"><?= icon("sun", 17) ?></span>
       </button>
       <?php if ($u = Auth::user()): ?>
         <?php if ($u['role'] === 'admin'): ?><a class="btn btn-ghost btn-sm" href="/admin">Admin</a><?php endif; ?>

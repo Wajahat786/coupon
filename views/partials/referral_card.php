@@ -10,7 +10,7 @@
     <button class="btn btn-copy btn-sm" type="button" data-copy="<?= e($r['link']) ?>">Copy Link</button>
   </div>
   <div class="card-foot">
-    <a class="btn btn-primary btn-sm" href="/go/referral/<?= (int) $r['id'] ?>" target="_blank" rel="noopener nofollow ugc">Visit →</a>
+    <a class="btn btn-primary btn-sm" href="/go/referral/<?= (int) $r['id'] ?>" target="_blank" rel="noopener nofollow ugc">Visit <?= icon("arrow-right", 14) ?></a>
     <span class="muted"><?= (int) $r['clicks'] ?> clicks</span>
   </div>
 </article>

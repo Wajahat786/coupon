@@ -1,5 +1,5 @@
 <section class="page-head">
-  <h1>🔗 Share a Referral Link</h1>
+  <h1><?= icon("link", 22) ?> Share a Referral Link</h1>
   <p class="muted">Paste your referral link — approved links get shown to thousands of bargain hunters.</p>
 </section>
 
