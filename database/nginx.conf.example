@@ -1,0 +1,35 @@
+server {
+    listen 80;
+    server_name yourdomain.com;
+    root /var/www/dealhub/public;
+    index index.php;
+
+    # force HTTPS after cert install:
+    # return 301 https://$host$request_uri;
+
+    # block dotfiles (.git, .env)
+    location ~ /\. { deny all; }
+
+    # block direct access to non-public assets
+    location ~ \.(sql|log|ini|env)$ { deny all; }
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ \.php$ {
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_pass unix:/run/php/php8.2-fpm.sock;
+        fastcgi_hide_header X-Powered-By;
+    }
+
+    # static caching
+    location ~* \.(css|js|png|jpg|jpeg|webp|svg|woff2)$ {
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+        try_files $uri =404;
+    }
+
+    client_max_body_size 1m;
+}
