@@ -7,8 +7,11 @@ declare(strict_types=1);
  * Tiny explicit router: no dynamic file inclusion based on user input.
  */
 
-require __DIR__ . '/../app/bootstrap.php';
-require __DIR__ . '/../app/helpers.php';
+$bootstrap = is_file(__DIR__ . '/../app/bootstrap.php')
+    ? __DIR__ . '/../app/bootstrap.php'   // layout A: public/ is the web root
+    : __DIR__ . '/app/bootstrap.php';     // layout B: everything in public_html
+require $bootstrap;
+require dirname($bootstrap) . '/helpers.php';
 
 use App\Controllers\Admin\CouponController as AdminCoupon;
 use App\Controllers\Admin\DashboardController;

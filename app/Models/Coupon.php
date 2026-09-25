@@ -61,8 +61,13 @@ final class Coupon
         $where  = ["c.status = 'approved'", '(c.expires_at IS NULL OR c.expires_at > NOW())'];
         $params = [];
         if ($search !== '') {
-            $where[] = '(c.store_name LIKE :s OR c.title LIKE :s OR c.code LIKE :s)';
-            $params[':s'] = '%' . addcslashes($search, '%_\\') . '%';
+            // NOTE: with emulation off, a named placeholder may appear only ONCE
+            // per query — use distinct :s1/:s2/:s3 bound to the same value.
+            $where[] = '(c.store_name LIKE :s1 OR c.title LIKE :s2 OR c.code LIKE :s3)';
+            $like = '%' . addcslashes($search, '%_\\') . '%';
+            $params[':s1'] = $like;
+            $params[':s2'] = $like;
+            $params[':s3'] = $like;
         }
         if ($category !== '') {
             $where[] = 'c.category = :cat';

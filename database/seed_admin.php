@@ -11,6 +11,9 @@ if (PHP_SAPI !== 'cli') {
 }
 
 require __DIR__ . '/../app/bootstrap.php';
+if (is_file(__DIR__ . '/../app/helpers.php')) {
+    require __DIR__ . '/../app/helpers.php'; // mb_* polyfills for CLI too
+}
 
 use App\Models\User;
 

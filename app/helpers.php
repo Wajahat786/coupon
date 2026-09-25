@@ -6,6 +6,37 @@ use App\Core\Auth;
 use App\Core\Security;
 use App\Models\Setting;
 
+/* ---------------------------------------------------------------------------
+ * mbstring polyfills — shared hosting often ships PHP WITHOUT ext-mbstring.
+ * Declared in the global namespace so calls resolve even from namespaced code.
+ * ------------------------------------------------------------------------- */
+if (!function_exists('mb_substr')) {
+    function mb_substr(string $s, int $start, ?int $length = null, ?string $enc = null): string
+    {
+        if ($enc !== null && strcasecmp($enc, 'UTF-8') !== 0) {
+            return substr($s, $start, $length ?? PHP_INT_MAX);
+        }
+        // Grapheme-ish safe split on UTF-8 code points
+        $chars = preg_split('//u', $s, -1, PREG_SPLIT_NO_EMPTY) ?: str_split($s);
+        return implode('', array_slice($chars, $start, $length));
+    }
+}
+if (!function_exists('mb_strlen')) {
+    function mb_strlen(string $s, ?string $enc = null): int
+    {
+        if ($enc !== null && strcasecmp($enc, 'UTF-8') !== 0) {
+            return strlen($s);
+        }
+        return count(preg_split('//u', $s, -1, PREG_SPLIT_NO_EMPTY) ?: str_split($s));
+    }
+}
+if (!function_exists('mb_strtolower')) {
+    function mb_strtolower(string $s, ?string $enc = null): string
+    {
+        return strtolower($s);
+    }
+}
+
 /** Shorthand escape. */
 function e(mixed $v): string
 {

@@ -48,8 +48,11 @@ final class ReferralLink
         $where  = ["status = 'approved'"];
         $params = [];
         if ($search !== '') {
-            $where[] = '(program_name LIKE :s OR title LIKE :s)';
-            $params[':s'] = '%' . addcslashes($search, '%_\\') . '%';
+            // distinct placeholders — named params may appear only once (emulation off)
+            $where[] = '(program_name LIKE :s1 OR title LIKE :s2)';
+            $like = '%' . addcslashes($search, '%_\\') . '%';
+            $params[':s1'] = $like;
+            $params[':s2'] = $like;
         }
         if ($category !== '') {
             $where[] = 'category = :cat';
