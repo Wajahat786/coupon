@@ -8,7 +8,7 @@ use App\Core\Database;
 
 final class Setting
 {
-    private static ?array $cache = null;
+    private static $cache = null;
 
     public static function get(string $key, string $default = ''): string
     {
