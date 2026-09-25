@@ -21,7 +21,7 @@ final class View
     }
 
     /** Standalone JSON response (API endpoints). */
-    public static function json(array $payload, int $status = 200): never
+    public static function json(array $payload, int $status = 200): void
     {
         http_response_code($status);
         header('Content-Type: application/json; charset=utf-8');

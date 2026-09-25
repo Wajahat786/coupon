@@ -10,7 +10,7 @@ return [
     'app' => [
         'name'     => getenv('APP_NAME') ?: 'DealHub',
         'env'      => getenv('APP_ENV') ?: 'production',
-        'debug'    => filter_var(getenv('APP_DEBUG') ?: 'false', FILTER_VALIDATE_BOOL),
+        'debug'    => filter_var(getenv('APP_DEBUG') ?: 'false', FILTER_VALIDATE_BOOLEAN),
         'url'      => rtrim(getenv('APP_URL') ?: '', '/'),
         'timezone' => getenv('APP_TZ') ?: 'UTC',
     ],
@@ -27,7 +27,7 @@ return [
     'security' => [
         // Name of the session cookie
         'cookie_name'  => 'dealhub_session',
-        'cookie_secure' => filter_var(getenv('COOKIE_SECURE') ?: 'true', FILTER_VALIDATE_BOOL),
+        'cookie_secure' => filter_var(getenv('COOKIE_SECURE') ?: 'true', FILTER_VALIDATE_BOOLEAN),
         // Max attempts per IP+identifier before lockout
         'login_max_attempts' => 5,
         'login_lockout_seconds' => 900, // 15 minutes

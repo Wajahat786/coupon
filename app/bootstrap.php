@@ -27,6 +27,26 @@ if (!defined('BASE_PATH')) {
     exit;
 }
 
+/* ---------- PHP 8.0 compat polyfills (Hostinger may run older PHP) ------ */
+if (!function_exists('str_contains')) {
+    function str_contains(string $haystack, string $needle): bool
+    {
+        return $needle === '' || strpos($haystack, $needle) !== false;
+    }
+}
+if (!function_exists('str_starts_with')) {
+    function str_starts_with(string $haystack, string $needle): bool
+    {
+        return $needle === '' || strncmp($haystack, $needle, strlen($needle)) === 0;
+    }
+}
+if (!function_exists('str_ends_with')) {
+    function str_ends_with(string $haystack, string $needle): bool
+    {
+        return $needle === '' || substr($haystack, -strlen($needle)) === $needle;
+    }
+}
+
 /* ---------- PSR-4 style micro autoloader (no composer required) ---------- */
 spl_autoload_register(static function (string $class): void {
     if (str_starts_with($class, 'App\\')) {
@@ -38,10 +58,21 @@ spl_autoload_register(static function (string $class): void {
 });
 
 /* ---------- Load .env file (simple parser, production can use real env) --- */
+// Search order covers every supported deployment layout:
+//   BASE_PATH/.env                  -> app root (public/ or public_html/)
+//   dirname(BASE_PATH)/.env         -> one level above app root
+//   BASE_PATH/public/.env           -> whole project inside public_html,
+//                                      .env left at project root by mistake
+//   __DIR__/.env                    -> legacy: .env beside bootstrap in app/
+$GLOBALS['ENV_LOADED_FROM'] = null;
 (static function (): void {
-    // Layout B (.env next to index.php inside public_html) blocks it via
-    // .htaccess; layout A keeps it outside the web root entirely.
-    foreach ([BASE_PATH . '/.env', dirname(BASE_PATH) . '/.env'] as $envFile) {
+    $candidates = [
+        BASE_PATH . '/.env',
+        dirname(BASE_PATH) . '/.env',
+        BASE_PATH . '/public/.env',
+        __DIR__ . '/.env',
+    ];
+    foreach ($candidates as $envFile) {
         if (!is_readable($envFile)) {
             continue;
         }
@@ -53,12 +84,16 @@ spl_autoload_register(static function (string $class): void {
             [$k, $v] = explode('=', $line, 2);
             $k = trim($k);
             $v = trim(trim($v), "\"'");
+            if ($v === '') {
+                continue; // empty value = not configured yet
+            }
             if (getenv($k) === false) {
                 putenv("$k=$v");
                 $_ENV[$k] = $v;
             }
         }
-        return; // first found .env wins
+        $GLOBALS['ENV_LOADED_FROM'] = $envFile;
+        return; // first readable .env wins
     }
 })();
 

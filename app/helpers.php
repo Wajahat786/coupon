@@ -38,7 +38,7 @@ if (!function_exists('mb_strtolower')) {
 }
 
 /** Shorthand escape. */
-function e(mixed $v): string
+function e($v): string
 {
     return Security::e($v);
 }

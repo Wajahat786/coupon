@@ -1,0 +1,30 @@
+[25-Sep-2026 04:57:19 UTC] [DB] CONFIG ERROR: No .env file found. Looked in: /workspace/, // and /workspace/public/. Copy .env.example to .env and fill in your Hostinger MySQL credentials (hPanel -> Databases -> MySQL accounts).
+[25-Sep-2026 04:57:19 UTC] PHP Fatal error:  Uncaught RuntimeException: No .env file found. Looked in: /workspace/, // and /workspace/public/. Copy .env.example to .env and fill in your Hostinger MySQL credentials (hPanel -> Databases -> MySQL accounts). in /workspace/app/Core/Database.php:39
+Stack trace:
+#0 /workspace/app/Core/Database.php(91): App\Core\Database::pdo()
+#1 /workspace/app/Models/User.php(18): App\Core\Database::run()
+#2 /workspace/database/seed_admin.php(26): App\Models\User::findByEmail()
+#3 {main}
+  thrown in /workspace/app/Core/Database.php on line 39
+[25-Sep-2026 04:57:19 UTC] [FATAL] Uncaught RuntimeException: No .env file found. Looked in: /workspace/, // and /workspace/public/. Copy .env.example to .env and fill in your Hostinger MySQL credentials (hPanel -> Databases -> MySQL accounts). in /workspace/app/Core/Database.php:39
+Stack trace:
+#0 /workspace/app/Core/Database.php(91): App\Core\Database::pdo()
+#1 /workspace/app/Models/User.php(18): App\Core\Database::run()
+#2 /workspace/database/seed_admin.php(26): App\Models\User::findByEmail()
+#3 {main}
+  thrown in /workspace/app/Core/Database.php:39
+[25-Sep-2026 04:57:54 UTC] [DB] CONFIG ERROR: No .env file found. Looked in: /workspace/, // and /workspace/public/. Copy .env.example to .env and fill in your Hostinger MySQL credentials (hPanel -> Databases -> MySQL accounts).
+[25-Sep-2026 04:57:54 UTC] PHP Fatal error:  Uncaught RuntimeException: No .env file found. Looked in: /workspace/, // and /workspace/public/. Copy .env.example to .env and fill in your Hostinger MySQL credentials (hPanel -> Databases -> MySQL accounts). in /workspace/app/Core/Database.php:39
+Stack trace:
+#0 /workspace/app/Core/Database.php(91): App\Core\Database::pdo()
+#1 /workspace/app/Models/User.php(18): App\Core\Database::run()
+#2 /workspace/database/seed_admin.php(26): App\Models\User::findByEmail()
+#3 {main}
+  thrown in /workspace/app/Core/Database.php on line 39
+[25-Sep-2026 04:57:54 UTC] [FATAL] Uncaught RuntimeException: No .env file found. Looked in: /workspace/, // and /workspace/public/. Copy .env.example to .env and fill in your Hostinger MySQL credentials (hPanel -> Databases -> MySQL accounts). in /workspace/app/Core/Database.php:39
+Stack trace:
+#0 /workspace/app/Core/Database.php(91): App\Core\Database::pdo()
+#1 /workspace/app/Models/User.php(18): App\Core\Database::run()
+#2 /workspace/database/seed_admin.php(26): App\Models\User::findByEmail()
+#3 {main}
+  thrown in /workspace/app/Core/Database.php:39

@@ -73,7 +73,7 @@ final class Security
 
     /* ---------------- Escaping ---------------- */
 
-    public static function e(mixed $v): string
+    public static function e($v): string
     {
         return htmlspecialchars((string) $v, ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5, 'UTF-8');
     }
